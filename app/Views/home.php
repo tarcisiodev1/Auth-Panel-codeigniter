@@ -2,18 +2,9 @@
 
 <?= $this->section('content') ?>
 <section>
-    <a href=" <?= url_to('auth.register') ?>">
-        <h3>
-            Register
-        </h3>
-
-    </a>
-    <a href=" <?= url_to('auth.login') ?>">
-        <h3>
-            Login
-        </h3>
-
-    </a>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <h1>HOME!</h1>
+    </div>
 </section>
 
 
