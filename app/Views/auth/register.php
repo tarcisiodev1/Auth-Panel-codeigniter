@@ -11,7 +11,20 @@
             <form action="" method="post" class="form mb-3">
 
                 <?= csrf_field(); ?>
-
+                <div class="form-group mb-3">
+                    <span style="color: red;">
+                        <!-- INCLUIR A VARIÁVEL $msg 
+                                            <?php echo $msg ?? ''  ?>
+                                            <?php if (isset($errors)) : ?>
+                                                <ul>
+                                                    <?php foreach ($errors as $error) : ?>
+                                                        <li><?php echo $error ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            <?php endif; ?>
+                                        -->
+                    </span>
+                </div>
                 <div class="form-group mb-3">
                     <label for="">Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Name Here">

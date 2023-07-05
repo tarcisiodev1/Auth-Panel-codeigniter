@@ -10,6 +10,13 @@
             <hr>
             <form action="" method="post" class="form mb-3">
                 <?= csrf_field(); ?>
+                <div class="form-group mb-3">
+                    <span style="color: red;">
+                        <!-- INCLUIR A VARIÁVEL $msg 
+                                            <?php echo $msg ?? ''  ?>
+                                        -->
+                    </span>
+                </div>
                 <div class="form-group  mb-3">
                     <label for="">E-mail</label>
                     <input type="text" class="form-control" name="email" placeholder="Email Here">
