@@ -8,7 +8,20 @@
 </head>
 
 <body>
-    <h1>HOME</h1>
+    <section>
+        <a href=" <?= url_to('auth.register') ?>">
+            <h3>
+                Register
+            </h3>
+
+        </a>
+        <a href=" <?= url_to('auth.login') ?>">
+            <h3>
+                Login
+            </h3>
+
+        </a>
+    </section>
 </body>
 
 </html>
