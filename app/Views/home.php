@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('master') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+<?= $this->section('content') ?>
+<section>
+    <a href=" <?= url_to('auth.register') ?>">
+        <h3>
+            Register
+        </h3>
 
-<body>
-    <section>
-        <a href=" <?= url_to('auth.register') ?>">
-            <h3>
-                Register
-            </h3>
+    </a>
+    <a href=" <?= url_to('auth.login') ?>">
+        <h3>
+            Login
+        </h3>
 
-        </a>
-        <a href=" <?= url_to('auth.login') ?>">
-            <h3>
-                Login
-            </h3>
+    </a>
+</section>
 
-        </a>
-    </section>
-</body>
 
-</html>
+<?= $this->endSection('') ?>

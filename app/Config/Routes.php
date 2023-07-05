@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->get('/auth/register', 'Auth::register', ['as' => 'auth.register']);
+$routes->get('/dashboard', 'Dashboard::index', ['as' => 'dashboard']);
 
 /*
  * --------------------------------------------------------------------
