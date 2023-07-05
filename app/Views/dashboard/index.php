@@ -1,9 +1,9 @@
 <?= $this->extend('master') ?>
 
 <?= $this->section('content') ?>
-<div class="container">
+<div class="container mt-3">
     <div class="row pt-3">
-        <div class="col-md-8 offset-2">
+        <div class="col-md-8 offset-2 mt-5">
             <h4>
                 <!-- ?= $title; ? --> Dashboard
             </h4>

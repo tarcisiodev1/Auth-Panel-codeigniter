@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="container">
     <div class="row mt-3">
-        <div class="col-md-4 offset-4">
+        <div class="col-md-4 offset-4 mt-5">
             <h4>
                 Sign Up
             </h4>

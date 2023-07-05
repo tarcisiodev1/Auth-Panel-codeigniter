@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <?= $this->include('partials/menu.php') ?>
     <?= $this->renderSection('content') ?>
 </body>
 
