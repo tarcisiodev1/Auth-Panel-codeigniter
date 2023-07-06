@@ -13,11 +13,11 @@
 
                 <div class="form-group  mb-3">
                     <label for="">User</label>
-                    <input type="text" class="form-control" name="user" value="tj" placeholder="Email Here">
+                    <input type="text" class="form-control" name="user" placeholder="Email Here">
                 </div>
                 <div class="form-group mb-3">
                     <label for="">Password</label>
-                    <input type="password" class="form-control" name="password" value="123" placeholder="Password Here">
+                    <input type="password" class="form-control" name="password" placeholder="Password Here">
                 </div>
                 <div class="form-group mb-3">
                     <input type="submit" class="btn btn-info" value="Sing In">
