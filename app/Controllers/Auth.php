@@ -49,9 +49,7 @@ class Auth extends BaseController
 
         if ($this->request->getMethod() === 'post') {
             $userModel = new UserModel();
-            // var_dump($this->request->getPost('user'));
-            // var_dump($this->request->getPost('password'));
-            // die();
+
             $userCheck = $userModel->check(
                 $this->request->getPost('user'),
                 $this->request->getPost('password')
