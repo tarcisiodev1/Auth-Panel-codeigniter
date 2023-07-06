@@ -13,6 +13,12 @@ class Auth extends BaseController
 
     public function register()
     {
+        // $data['msg'] = '';
+
+        // if () {
+        //     # code...
+        // }
+
         return view('auth/register');
     }
 
