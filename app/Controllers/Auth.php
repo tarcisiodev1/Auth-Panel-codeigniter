@@ -60,6 +60,13 @@ class Auth extends BaseController
                 return redirect()->route('dashboard');
             }
         }
-        return view('auth/login',);
+        return view('auth/login', $data);
     }
+
+    public function logout()
+    {
+        //destruir a sessao (session) e voltar para o login
+        $this->session->destroy();
+        return redirect()->route('logout')
+    } 
 }
