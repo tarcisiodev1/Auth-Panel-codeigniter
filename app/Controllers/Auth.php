@@ -54,8 +54,8 @@ class Auth extends BaseController
             };
             if ($userCheck) {
                 //salva os dados na sessão
-                session()->set('nome', $userModel->user);
-                session()->set('nome', $userModel->perfil);
+                session()->set('user', $userModel->user);
+                session()->set('profile', $userModel->profile);
                 //redireciona o user para a página restrita
                 return redirect()->route('dashboard');
             }
@@ -66,7 +66,7 @@ class Auth extends BaseController
     public function logout()
     {
         //destruir a sessao (session) e voltar para o login
-        $this->session->destroy();
-        return redirect()->route('logout')
-    } 
+        session()->destroy();
+        return redirect()->route('logout');
+    }
 }
