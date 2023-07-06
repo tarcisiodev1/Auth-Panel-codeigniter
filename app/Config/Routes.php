@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->match(['get', 'post'], '/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->match(['get', 'post'], '/auth/register', 'Auth::register', ['as' => 'auth.register']);
 $routes->get('/dashboard', 'Dashboard::index', ['as' => 'dashboard']);
+$routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 
 /*
  * --------------------------------------------------------------------
