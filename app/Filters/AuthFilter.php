@@ -26,6 +26,8 @@ class AuthFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // $session = service('session');
+        // var_dump(session()->get('profile'));
+        // die();
         if (!in_array(session()->get('profile'), $arguments)) {
             die('Você não tem permissão para acessar essa página!');
         }

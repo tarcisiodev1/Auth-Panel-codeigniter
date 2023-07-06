@@ -8,10 +8,13 @@
                 Sign Up
             </h4>
             <hr>
-            <form action="" method="post" class="form mb-3">
+            <form action=" <?= url_to('auth.register'); ?>" method="post" class="form mb-3">
 
                 <?= csrf_field(); ?>
-
+                <div class=" form-group mb-3">
+                    <label for="">User</label>
+                    <input type="text" class="form-control" name="user" placeholder="User Here">
+                </div>
                 <div class="form-group mb-3">
                     <label for="">Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Name Here">
@@ -24,10 +27,10 @@
                     <label for="">Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Password Here">
                 </div>
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                     <label for="">Confirm Password</label>
                     <input type="password" class="form-control" name="passwordConf" placeholder="Confirm Password Here">
-                </div>
+                </div> -->
                 <div class="form-group mb-3">
                     <input type="submit" class="btn btn-info" value="Sing Up">
                 </div>
@@ -36,11 +39,11 @@
                         <!-- INCLUIR A VARIÁVEL $msg -->
                         <?php echo $msg ?? ''  ?>
                         <?php if (isset($errors)) : ?>
-                        <ul>
-                            <?php foreach ($errors as $error) : ?>
-                            <li><?php echo $error ?></li>
-                            <?php endforeach; ?>
-                        </ul>
+                            <ul>
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?php echo $error ?></li>
+                                <?php endforeach; ?>
+                            </ul>
                         <?php endif; ?>
 
                     </span>

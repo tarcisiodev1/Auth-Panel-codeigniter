@@ -13,7 +13,7 @@ class UserModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user', 'name', 'avatar', 'email', 'profile', 'password'];
+    protected $allowedFields    = ['id', 'user', 'name', 'email', 'profile', 'password', 'avatar'];
 
     // Dates
     protected $useTimestamps = false;
@@ -24,12 +24,14 @@ class UserModel extends Model
 
     // Validation
     protected $validationRules      = [
-        //  - is_unique[table '.' column]
-        'user' => 'required|is_unique[users.user',
-        'name' => 'required',
-        'email' => 'required',
-        'password' => 'required',
-        'profile' => 'required',
+
+        'user' => 'required|is_unique[users.user]',
+        // 'name' => 'required',
+        // 'email' => 'required',
+        // 'profile' => 'required',
+        // 'password' => 'required',
+        // 'avatar' => 'required',
+
 
     ];
     protected $validationMessages   = [];
@@ -55,7 +57,8 @@ class UserModel extends Model
 
     public function check($user, $pass)
     {
-        $getUser = $this->where('usuario', $user)->first();
+        $getUser = $this->where('user', $user)->first();
+
         if (is_null($getUser)) {
             return false;
         }

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UserModel;
 use Exception;
 
 class Auth extends BaseController
@@ -18,22 +19,26 @@ class Auth extends BaseController
 
 
 
-        if (is_null($this->request->getPost())) {
+        if ($this->request->getMethod() === 'post') {
+            // var_dump($this->request->getPost());
+            // die();
             $userModel = model("UserModel");
             try {
                 $userData = $this->request->getPost();
                 $userData['profile'] = 'user';
-                if ($userModel->save($userData)) {
+                $userData['avatar'] = 'null';
+                if ($userModel->insert($userData)) {
                     $data['msg'] = 'Usuario cadastrado com sucesso';
                 } else {
                     $data['msg'] = 'Erro ao criar usuário';
                     $data['erros'] = $userModel->errors();
                 }
             } catch (Exception $e) {
+                $data['msg'] = 'Erro ao criar usuário:' . $e->getMessage();
             }
         }
 
-        return view('auth/register');
+        return view('auth/register', $data);
     }
 
     public function login()
@@ -42,8 +47,11 @@ class Auth extends BaseController
         // die();
         $data['msg'] = '';
 
-        if (is_null($this->request->getPost())) {
-            $userModel = model("UserModel");
+        if ($this->request->getMethod() === 'post') {
+            $userModel = new UserModel();
+            // var_dump($this->request->getPost('user'));
+            // var_dump($this->request->getPost('password'));
+            // die();
             $userCheck = $userModel->check(
                 $this->request->getPost('user'),
                 $this->request->getPost('password')
@@ -51,11 +59,14 @@ class Auth extends BaseController
             if (!$userCheck) {
                 $data['msg'] = 'Usuário e/ou senha incorretos';
                 return;
-            };
-            if ($userCheck) {
+            } else {
                 //salva os dados na sessão
-                session()->set('user', $userModel->user);
-                session()->set('profile', $userModel->profile);
+                // var_dump($userModel->user);
+                // var_dump($userModel->profile);
+                // die();
+                session()->set('user', $userCheck->user);
+                session()->set('profile', $userCheck->profile);
+
                 //redireciona o user para a página restrita
                 return redirect()->route('dashboard');
             }

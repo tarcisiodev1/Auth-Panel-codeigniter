@@ -8,16 +8,16 @@
                 Sign Ip
             </h4>
             <hr>
-            <form action="" method="post" class="form mb-3">
+            <form action="<?= url_to('auth.login') ?>" method="post" class="form mb-3">
                 <?= csrf_field(); ?>
 
                 <div class="form-group  mb-3">
-                    <label for="">E-mail</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email Here">
+                    <label for="">User</label>
+                    <input type="text" class="form-control" name="user" value="tj" placeholder="Email Here">
                 </div>
                 <div class="form-group mb-3">
                     <label for="">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password Here">
+                    <input type="password" class="form-control" name="password" value="123" placeholder="Password Here">
                 </div>
                 <div class="form-group mb-3">
                     <input type="submit" class="btn btn-info" value="Sing In">
