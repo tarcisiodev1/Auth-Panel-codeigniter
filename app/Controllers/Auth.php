@@ -43,8 +43,7 @@ class Auth extends BaseController
 
     public function login()
     {
-        // var_dump($userModel = model("UserModel"));
-        // die();
+
         $data['msg'] = '';
 
         if ($this->request->getMethod() === 'post') {
