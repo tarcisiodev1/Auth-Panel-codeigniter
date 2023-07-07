@@ -40,7 +40,7 @@
                         </td>
                         <td>
                             <!--  href="?= site_url('auth/logout); ?>"  -->
-                            <a href="">Log out</a>
+                            <a href="<?= url_to('logout') ?>">Log out</a>
 
                         </td>
                         <td>

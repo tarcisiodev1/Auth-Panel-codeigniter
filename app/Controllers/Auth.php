@@ -76,6 +76,6 @@ class Auth extends BaseController
     {
         //destruir a sessao (session) e voltar para o login
         session()->destroy();
-        return redirect()->route('logout');
+        return redirect()->route('auth.login');
     }
 }
