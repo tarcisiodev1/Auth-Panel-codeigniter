@@ -45,7 +45,7 @@
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>
-
+                        <!-- Trocar por flash message   -->
                     </span>
                 </div>
             </form>
