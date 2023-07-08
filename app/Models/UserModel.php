@@ -25,7 +25,7 @@ class UserModel extends Model
     // Validation
     protected $validationRules      = [
 
-        'user' => 'required|is_unique[users.user]',
+        // 'user' => 'required|is_unique[users.user]',
         // 'name' => 'required',
         // 'email' => 'required',
         // 'profile' => 'required',
@@ -57,7 +57,7 @@ class UserModel extends Model
 
     public function check($user, $pass)
     {
-        $getUser = $this->where('user', $user)->first();
+        $getUser = $this->select('id, user, name, email, profile, password, avatar')->where('user', $user)->first();
 
         if (is_null($getUser)) {
             return false;

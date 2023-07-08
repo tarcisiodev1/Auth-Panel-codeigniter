@@ -19,7 +19,7 @@ class Auth extends BaseController
 
 
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->is('post')) {
             // var_dump($this->request->getPost());
             // die();
             $userModel = model("UserModel");
@@ -44,9 +44,29 @@ class Auth extends BaseController
     public function login()
     {
 
-        $data['msg'] = '';
 
-        if ($this->request->getMethod() === 'post') {
+
+        if ($this->request->is('post')) {
+
+
+            $validated = $this->validate(
+                [
+                    'user' => 'required',
+                    // 'user' => 'required|is_unique[users.user]',
+                    // 'name' => 'required',
+                    // 'email' => 'required',
+                    // 'profile' => 'required',
+                    'password' => 'required',
+                    // 'avatar' => 'required',
+                ],
+            );
+
+            if (!$validated) {
+                return redirect()->route('auth.login')->with('errors', $this->validator->getErrors());
+            }
+
+
+
             $userModel = new UserModel();
 
             $userCheck = $userModel->check(
@@ -54,9 +74,10 @@ class Auth extends BaseController
                 $this->request->getPost('password')
             );
             if (!$userCheck) {
-                $data['msg'] = 'Usuário e/ou senha incorretos';
-                return;
-            } else {
+
+                return redirect()->route('auth.login')->with('error', 'Incorrect user and/or password');
+            }
+            if ($userCheck) {
                 //salva os dados na sessão
                 // var_dump($userModel->user);
                 // var_dump($userModel->profile);
@@ -68,7 +89,7 @@ class Auth extends BaseController
                 return redirect()->route('dashboard');
             }
         }
-        return view('auth/login', $data);
+        return view('auth/login');
     }
 
     public function logout()
