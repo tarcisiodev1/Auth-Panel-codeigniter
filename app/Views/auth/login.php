@@ -28,6 +28,7 @@
                         <?php echo $msg ?? ''  ?>
 
                     </span>
+                    <!-- Usar flash message -->
                 </div>
             </form>
             <br>
