@@ -79,9 +79,7 @@ class Auth extends BaseController
             }
             if ($userCheck) {
                 //salva os dados na sessão
-                // var_dump($userModel->user);
-                // var_dump($userModel->profile);
-                // die();
+
                 session()->set('user', $userCheck->user);
                 session()->set('profile', $userCheck->profile);
 
