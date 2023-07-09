@@ -83,7 +83,7 @@ class Auth extends BaseController
                 session()->set('user', $userCheck->user);
                 session()->set('profile', $userCheck->profile);
 
-                //redireciona o user para a página restrita
+                //redireciona o user para dashboard
                 return redirect()->route('dashboard');
             }
         }
