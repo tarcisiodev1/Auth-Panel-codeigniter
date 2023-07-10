@@ -15,30 +15,54 @@ class Auth extends BaseController
 
     public function register()
     {
-        $data['msg'] = '';
-
-
 
         if ($this->request->is('post')) {
-            // var_dump($this->request->getPost());
-            // die();
-            $userModel = model("UserModel");
-            try {
-                $userData = $this->request->getPost();
-                $userData['profile'] = 'user';
-                $userData['avatar'] = 'null';
-                if ($userModel->insert($userData)) {
-                    $data['msg'] = 'Usuario cadastrado com sucesso';
-                } else {
-                    $data['msg'] = 'Erro ao criar usuário';
-                    $data['erros'] = $userModel->errors();
-                }
-            } catch (Exception $e) {
-                $data['msg'] = 'Erro ao criar usuário:' . $e->getMessage();
+
+            $validated = $this->validate(
+                [
+
+                    'user' => 'required|is_unique[users.user]',
+                    'name' => 'required',
+                    'email' => 'required|valid_email|is_unique[users.email]',
+                    'passconf' => 'required|matches[password]',
+                    // 'profile' => 'required',
+                    'password' => 'required|min_length[5]',
+                    // 'avatar' => 'required',
+                ],
+            );
+
+            if (!$validated) {
+                return redirect()->route('auth.register')->with('errors', $this->validator->getErrors());
             }
+            $userData = $this->request->getPost();
+            $userData['profile'] = 'user';
+            $userData['avatar'] = 'null';
+
+            $userModel = new UserModel();
+
+            $inserted = $userModel->insert($userData);
+            if (!$inserted) {
+                return redirect()->route('auth.register')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO');
+            }
+
+            return redirect()->route('auth.register')->with('success', 'Cadastro realizado com sucesso!');
+            // try {
+            //     // $userData = $this->request->getPost();
+            //     // $userData['profile'] = 'user';
+            //     // $userData['avatar'] = 'null';
+            //     // if ($userModel->insert($userData)) {
+            //     //     $data['msg'] = 'Usuario cadastrado com sucesso';
+            //     // }
+            //     // //  else {
+            //     // //     $data['msg'] = 'Erro ao criar usuário';
+            //     // //     $data['erros'] = $userModel->errors();
+            //     // // }
+            // } catch (Exception $e) {
+            //     $data['msg'] = 'Erro ao criar usuário:' . $e->getMessage();
+            // }
         }
 
-        return view('auth/register', $data);
+        return view('auth/register');
     }
 
     public function login()
