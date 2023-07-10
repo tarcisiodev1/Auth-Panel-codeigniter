@@ -46,20 +46,6 @@ class Auth extends BaseController
             }
 
             return redirect()->route('auth.register')->with('success', 'Cadastro realizado com sucesso!');
-            // try {
-            //     // $userData = $this->request->getPost();
-            //     // $userData['profile'] = 'user';
-            //     // $userData['avatar'] = 'null';
-            //     // if ($userModel->insert($userData)) {
-            //     //     $data['msg'] = 'Usuario cadastrado com sucesso';
-            //     // }
-            //     // //  else {
-            //     // //     $data['msg'] = 'Erro ao criar usuário';
-            //     // //     $data['erros'] = $userModel->errors();
-            //     // // }
-            // } catch (Exception $e) {
-            //     $data['msg'] = 'Erro ao criar usuário:' . $e->getMessage();
-            // }
         }
 
         return view('auth/register');
