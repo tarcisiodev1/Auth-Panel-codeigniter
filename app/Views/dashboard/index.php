@@ -21,22 +21,26 @@
                 <tbody>
                     <tr>
                         <th scope="row">
+                            <!-- <?= var_dump(WRITEPATH . 'uploads\images\\' . session()->get('avatar')); ?> -->
                             <!--img src="/images/?= $userInfo['avatar']; ?>" -->
-                            <img src="" alt="" width="200px" height="150px" class="mb-2">
+
+                            <img src="<?= 'images/' . session()->get('avatar'); ?>" alt="Img" width="200px"
+                                height="150px" class="mb-2">
                             <!-- form action="?= base_url('auth/uploadImage'); ?>" -->
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <input type="file" class="form-control" name="userImage" size="10" />
+                            <form action="<?= url_to('dashboard.upload'); ?>" method="post"
+                                enctype="multipart/form-data">
+                                <input type="file" name="userfile" class="form-control-file" size="10" />
                                 <hr>
                                 <input type="submit">
                             </form>
                         </th>
                         <td>
-                            <!-- ?= $userInfo['name']; ?> -->
-                            Mark
+                            <?= session()->get('name') ?>
+
                         </td>
                         <td>
-                            <!-- ?= $userInfo['email']; ?> -->
-                            Otto
+                            <?= session()->get('email') ?>
+
                         </td>
                         <td>
                             <!--  href="?= site_url('auth/logout); ?>"  -->
@@ -52,15 +56,18 @@
                     </tr>
                 </tbody>
             </table>
-            <!-- ?php 
-                if (!empty(session()->getFlashData('notification'))) {
-                    ?>
-                <div class="alert alert-info">
-                    ?= session()->getFlashData('notification')?>
-                </div>;
-                ?php
-                }
-                ?> -->
+            <?php if (!empty(session()->getFlashData('notification'))) : ?>
+            <div class="alert alert-info">
+                <?= session()->getFlashData('notification') ?>
+            </div>
+            <?php endif ?>
+            <div class="form-group mb-3">
+                <?php if (session()->has('error')) : ?>
+                <span class="text text-danger">
+                    <?php echo session()->getFlashdata('error') ?>
+                </span>
+                <?php endif ?>
+            </div>
         </div>
     </div>
 </div>

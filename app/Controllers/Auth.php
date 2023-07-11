@@ -89,10 +89,26 @@ class Auth extends BaseController
             }
             if ($userCheck) {
                 //salva os dados na sessão
-
+                unset($userCheck->password);
+                session()->set('id', $userCheck->id);
                 session()->set('user', $userCheck->user);
+                session()->set('name', $userCheck->name);
                 session()->set('profile', $userCheck->profile);
+                session()->set('email', $userCheck->email);
+                session()->set('avatar', $userCheck->avatar);
 
+
+                $avatarPath = WRITEPATH . 'uploads/images/' . session()->get('avatar');
+                $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
+                // Move a imagem para o diretório público
+                if (file_exists($avatarPath)) {
+                    copy($avatarPath, $newAvatarPath);
+                    return redirect()->route('dashboard');
+                }
+                // Remove a imagem do diretório "uploads/images"
+
+                // var_dump(session()->get('user')->profile);
+                // die();
                 //redireciona o user para dashboard
                 return redirect()->route('dashboard');
             }
@@ -102,8 +118,11 @@ class Auth extends BaseController
 
     public function logout()
     {
+
+        helper('filesystem');
         //destruir a sessao (session) e voltar para o login
         session()->destroy();
+        delete_files('images/');
         return redirect()->route('auth.login');
     }
 }
