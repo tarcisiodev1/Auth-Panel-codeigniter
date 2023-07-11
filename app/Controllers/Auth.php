@@ -107,8 +107,7 @@ class Auth extends BaseController
                 }
                 // Remove a imagem do diretório "uploads/images"
 
-                // var_dump(session()->get('user')->profile);
-                // die();
+
                 //redireciona o user para dashboard
                 return redirect()->route('dashboard');
             }
