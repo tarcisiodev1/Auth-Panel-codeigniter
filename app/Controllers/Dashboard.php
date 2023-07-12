@@ -49,16 +49,24 @@ class Dashboard extends BaseController
             return redirect()->route('dashboard.upload')->with('error', 'upload failed');
         }
         $img = $this->request->getFile('userfile');
+
+
         // Verifica se o arquivo ainda não foi movido e se o ID do usuário está definido
         if (!$img->hasMoved()) {
-            // Move o arquivo para o diretório de upload com o nome obtido anteriormente
+            //Redimensionar imagem
             $newName = $img->getRandomName();
-            $uploadPath = WRITEPATH . 'uploads\images';
-            $img->move($uploadPath, $newName);
+            \Config\Services::image()
+                ->withFile($img)
+                ->resize(200, 200, true)
+                ->save(WRITEPATH . 'uploads\images\\' . $newName);
+            // Move o arquivo para o diretório de upload com o nome obtido anteriormente
+
+            $uploadPath = WRITEPATH . 'uploads/images';
+            // $img->move($uploadPath, $newName);
 
             // Define os dados a serem atualizados no banco de dados
             $data = [
-                'avatar' => $img->getName(),
+                'avatar' => $newName,
             ];
 
             // Cria uma instância do model de usuário
@@ -67,7 +75,7 @@ class Dashboard extends BaseController
             // Atualiza os dados do usuário no banco de dados usando o ID do usuário logado
             $userModel->update($loggedInUserId, $data);
 
-            session()->set('avatar', $img->getName());
+            session()->set('avatar', $newName);
 
 
             $avatarPath = WRITEPATH . 'uploads/images/' . session()->get('avatar');
@@ -76,9 +84,9 @@ class Dashboard extends BaseController
             copy($avatarPath, $newAvatarPath);
             // var_dump(WRITEPATH);
             // die();
-            $data = ['upload_file_path' => $uploadPath . '\\'];
+            // $data = ['upload_file_path' => $uploadPath . '\\'];
             // Redireciona para a página de dashboard com uma mensagem de notificação
-            return redirect()->route('dashboard', $data)->with('notification', 'Image uploaded successfully');
+            return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully');
         } else {
             // Redireciona para a página de dashboard com uma mensagem de notificação de falha
             return redirect()->route('dashboard')->with('notification', 'Image uploaded failed');

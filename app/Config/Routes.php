@@ -38,6 +38,7 @@ $routes->get('/dashboard', 'Dashboard::index',  ['as' => 'dashboard', 'filter' =
 $routes->post('/dashboard/index', 'Dashboard::upload',  ['as' => 'dashboard.upload', 'filter' => 'authf:admin,user']);
 $routes->post('/dashboard', 'Dashboard::index',  ['as' => 'dashboard', 'filter' => 'authf:admin,user']);
 $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
+$routes->get('/dashboard/post', 'Post::index', ['as' => 'dashboard.post']);
 
 /*
  * --------------------------------------------------------------------

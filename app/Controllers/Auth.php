@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\UserModel;
 use Exception;
 
+use function PHPUnit\Framework\isEmpty;
+
 class Auth extends BaseController
 {
     public function index()
@@ -53,7 +55,9 @@ class Auth extends BaseController
 
     public function login()
     {
-
+        if (session()->has('user')) {
+            return redirect()->route('dashboard');
+        }
 
 
         if ($this->request->is('post')) {
@@ -105,7 +109,7 @@ class Auth extends BaseController
                     copy($avatarPath, $newAvatarPath);
                     return redirect()->route('dashboard');
                 }
-                // Remove a imagem do diretório "uploads/images"
+
 
 
                 //redireciona o user para dashboard
