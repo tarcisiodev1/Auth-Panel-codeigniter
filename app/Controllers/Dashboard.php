@@ -86,10 +86,10 @@ class Dashboard extends BaseController
             // die();
             // $data = ['upload_file_path' => $uploadPath . '\\'];
             // Redireciona para a página de dashboard com uma mensagem de notificação
-            return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully');
+            return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully👽');
         } else {
             // Redireciona para a página de dashboard com uma mensagem de notificação de falha
-            return redirect()->route('dashboard')->with('notification', 'Image uploaded failed');
+            return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
         }
 
         // $userModel = new UserModel();

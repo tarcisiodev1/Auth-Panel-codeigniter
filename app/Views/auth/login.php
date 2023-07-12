@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-4 offset-4 mt-5">
-            <h4>
-                Sign Ip
+            <h4 class="mt-4">
+                Sign Ip😜
             </h4>
             <hr>
 
@@ -18,7 +18,7 @@
                     <input type="text" class="form-control" name="user" placeholder="Email Here">
                     <span class="text text-danger">
                         <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['user'] ?? ''  ?>
+                        <?php echo session()->getFlashdata('errors')['user']  ?? ''  ?>
 
                     </span>
                 </div>
@@ -31,14 +31,15 @@
 
                     </span>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group mb-4">
                     <input type="submit" class="btn btn-info" value="Sing In">
                 </div>
                 <div class="form-group mb-3">
                     <?php if (session()->has('error')) : ?>
-                    <span class="text text-danger">
-                        <?php echo session()->getFlashdata('error'); ?>
-                    </span>
+                        <span class="text text-danger">
+                            <?php echo session()->getFlashdata('error'); ?>
+
+                        </span>
                     <?php endif ?>
                 </div>
             </form>

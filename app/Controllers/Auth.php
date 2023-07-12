@@ -44,10 +44,10 @@ class Auth extends BaseController
 
             $inserted = $userModel->insert($userData);
             if (!$inserted) {
-                return redirect()->route('auth.register')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO');
+                return redirect()->route('auth.register')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
             }
 
-            return redirect()->route('auth.register')->with('success', 'Cadastro realizado com sucesso!');
+            return redirect()->route('auth.register')->with('success', 'Cadastro realizado com sucesso!🥳');
         }
 
         return view('auth/register');
@@ -89,7 +89,7 @@ class Auth extends BaseController
             );
             if (!$userCheck) {
 
-                return redirect()->route('auth.login')->with('error', 'Incorrect user and/or password');
+                return redirect()->route('auth.login')->with('error', 'Incorrect user and/or password 🤔');
             }
             if ($userCheck) {
                 //salva os dados na sessão

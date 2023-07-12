@@ -32,7 +32,7 @@ class Post extends Migration
                 'null' => false,
                 'constraint' => 255,
             ],
-            'description' => [
+            'body' => [
                 'type' => 'TEXT',
                 'null' => false,
             ],
