@@ -7,19 +7,20 @@
             <div class="col-md-8 offset-md-2">
                 <h1 class="text-center">HOME!</h1>
 
-                <ol class="list-unstyled">
-                    <?php $index = 1; ?>
-                    <?php foreach ($posts as $post) : ?>
-                    <li class="mb-4">
-                        <span class="mr-2"><?= $index++ ?>.</span>
-                        <a href="<?= url_to('post.slug', $post->slug) ?>"
-                            class="text-decoration-none"><?= $post->title ?></a>
-                    </li>
+                <?php $currentPage = $pager->getCurrentPage() ?? 1; ?>
+                <?php $startIndex = ($currentPage - 1) * $pager->getPerPage(); ?>
+
+                <ol class="list-unstyled pl-4">
+                    <?php foreach ($posts as $index => $post) : ?>
+                        <li class="mb-4">
+                            <span class="mr-2"><?= $startIndex + $index + 1 ?>.</span>
+                            <a href="<?= url_to('post.slug', $post->slug) ?>" class="text-decoration-none"><?= $post->title ?></a>
+                        </li>
                     <?php endforeach ?>
                 </ol>
 
-                <div class="d-flex justify-content-center mt-3">
-                    <?= $pager->links() ?>
+                <div class="d-flex justify-content-start mt-3">
+                    <?= $pager->links('default_full') ?>
                 </div>
             </div>
         </div>
