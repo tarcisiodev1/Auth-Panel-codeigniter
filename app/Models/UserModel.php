@@ -13,7 +13,7 @@ class UserModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'user', 'name', 'email', 'profile', 'password', 'avatar'];
+    protected $allowedFields    = ['id', 'user', 'email', 'profile', 'password', 'avatar'];
 
     // Dates
     protected $useTimestamps = false;
@@ -63,7 +63,7 @@ class UserModel extends Model
 
     public function check($user, $pass)
     {
-        $getUser = $this->select('id, user, name, email, profile, password, avatar')->where('user', $user)->first();
+        $getUser = $this->select('id, user, email, profile, password, avatar')->where('user', $user)->first();
 
         if (is_null($getUser)) {
             return false;

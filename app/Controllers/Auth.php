@@ -24,9 +24,9 @@ class Auth extends BaseController
                 [
 
                     'user' => 'required|is_unique[users.user]',
-                    'name' => 'required',
+                    // 'name' => 'required',
                     'email' => 'required|valid_email|is_unique[users.email]',
-                    'passconf' => 'required|matches[password]',
+                    // 'passconf' => 'required|matches[password]',
                     // 'profile' => 'required',
                     'password' => 'required|min_length[5]',
                     // 'avatar' => 'required',
@@ -96,7 +96,6 @@ class Auth extends BaseController
                 unset($userCheck->password);
                 session()->set('id', $userCheck->id);
                 session()->set('user', $userCheck->user);
-                session()->set('name', $userCheck->name);
                 session()->set('profile', $userCheck->profile);
                 session()->set('email', $userCheck->email);
                 session()->set('avatar', $userCheck->avatar);

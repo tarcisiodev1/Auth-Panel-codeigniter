@@ -9,35 +9,39 @@
             </h4>
             <hr>
 
-
-            <form action="<?= url_to('auth.login') ?>" method="post" class="form mb-3">
+            <form action="<?= url_to('post.create') ?>" method="post" class="form mb-3">
                 <?= csrf_field(); ?>
 
                 <div class="form-group  mb-3">
-                    <label for="">TITLE</label>
-                    <input type="text" class="form-control" name="user" placeholder="Email Here">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter the title">
                     <span class="text text-danger">
-                        <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['user'] ?? ''  ?>
-
+                        <!-- Include Flash data -->
+                        <?= session()->getFlashdata('errors')['title'] ?? '' ?>
                     </span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for=""></label>
-                    <input type="password" class="form-control" name="password" placeholder="POST HERE">
+                    <label for="body">Body</label>
+                    <textarea class="form-control" name="body" id="body" rows="5" placeholder="Enter the body"></textarea>
                     <span class="text text-danger">
-                        <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['password'] ?? ''  ?>
-
+                        <!-- Include Flash data -->
+                        <?= session()->getFlashdata('errors')['body'] ?? '' ?>
                     </span>
                 </div>
                 <div class="form-group mb-3">
-                    <input type="submit" class="btn btn-info" value="Sing In">
+                    <input type="submit" class="btn btn-info" value="Submit">
                 </div>
                 <div class="form-group mb-3">
                     <?php if (session()->has('error')) : ?>
                         <span class="text text-danger">
-                            <?php echo session()->getFlashdata('error'); ?>
+                            <?= session()->getFlashdata('error') ?>
+                        </span>
+                    <?php endif ?>
+                </div>
+                <div class="form-group mb-3">
+                    <?php if (session()->has('success')) : ?>
+                        <span class="text text-danger">
+                            <?= session()->getFlashdata('success') ?>
                         </span>
                     <?php endif ?>
                 </div>
@@ -47,8 +51,6 @@
                 Create a new account
             </a>
         </div>
-
-
     </div>
 </div>
 

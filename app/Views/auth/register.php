@@ -20,15 +20,7 @@
 
                     </span>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Name Here">
-                    <span class="text text-danger">
-                        <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['name'] ?? ''  ?>
 
-                    </span>
-                </div>
                 <div class="form-group  mb-3">
                     <label for="">E-mail</label>
                     <input type="text" class="form-control" name="email" placeholder="Email Here">
@@ -47,15 +39,7 @@
 
                     </span>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="">Confirm Password</label>
-                    <input type="password" class="form-control" name="passconf" placeholder="Confirm Password Here">
-                    <span class="text text-danger">
-                        <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['passconf'] ?? ''  ?>
 
-                    </span>
-                </div>
                 <div class="form-group  mb-4">
                     <input type="submit" class="btn btn-info" value="Sing Up">
                 </div>
@@ -63,16 +47,16 @@
                 <div class="form-group  mt-3">
 
                     <?php if (session()->has('error')) : ?>
-                        <span class="text text-danger">
-                            <?php echo session()->getFlashdata('error'); ?>
+                    <span class="text text-danger">
+                        <?php echo session()->getFlashdata('error'); ?>
 
-                        </span>
+                    </span>
                     <?php endif ?>
                     <?php if (session()->has('success')) : ?>
-                        <span class="alert alert-info">
-                            <?php echo session()->getFlashdata('success'); ?>
+                    <span class="alert alert-info">
+                        <?php echo session()->getFlashdata('success'); ?>
 
-                        </span>
+                    </span>
                     <?php endif ?>
 
                 </div>
