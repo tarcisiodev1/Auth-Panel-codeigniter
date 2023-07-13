@@ -14,6 +14,12 @@
                     </div>
                     <div class="mt-3">
                         <a href="<?= url_to('/') ?>" class="btn btn-primary">Back to Posts</a>
+                        <?php if (session()->has('user')) : ?>
+                            <div class="btn-group">
+                                <a href="<?= url_to('post.editGet', $post->slug) ?>" class="btn btn-secondary">Edit</a>
+                                <a href="<?= url_to('post.destroy', $post->slug) ?>" class="btn btn-danger">Delete</a>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

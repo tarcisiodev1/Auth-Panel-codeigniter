@@ -9,7 +9,7 @@ class Home extends BaseController
     public function index()
     {
         $postmodel = new PostModel();
-        $posts = $postmodel->select('id,title,slug,created_at')->paginate(10);
+        $posts = $postmodel->select('id,title,slug,created_at')->orderBy('id', 'DESC')->paginate(15);
 
         // var_dump($posts);
         // die();

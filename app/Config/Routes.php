@@ -40,9 +40,13 @@ $routes->post('/dashboard', 'Dashboard::index',  ['as' => 'dashboard', 'filter' 
 $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 $routes->get('/post', 'Post::index', ['as' => 'post', 'filter' => 'authf:admin,user']);
 $routes->get('/addpost', 'Post::store', ['as' => 'post.store', 'filter' => 'authf:admin,user']);
+// $routes->get('/addpost', 'Post::create', ['as' => 'post.create', 'filter' => 'authf:admin,user']);
 $routes->post('/addpost', 'Post::create', ['as' => 'post.create', 'filter' => 'authf:admin,user']);
 $routes->get('/post/(:any)', 'Post::index/$1', ['as' => 'post.slug']);
 $routes->get('/postview', 'Post::view', ['as' => 'post.view']);
+$routes->post('/updatepost/(:any)', 'Post::update/$1', ['as' => 'post.up', 'filter' => 'authf:admin,user']);
+$routes->get('/editpost/(:any)', 'Post::edit/$1', ['as' => 'post.editGet', 'filter' => 'authf:admin,user']);
+$routes->get('/deletepost/(:any)', 'Post::destroy/$1', ['as' => 'post.destroy', 'filter' => 'authf:admin,user']);
 
 /*
  * --------------------------------------------------------------------
