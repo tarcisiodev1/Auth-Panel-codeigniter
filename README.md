@@ -6,8 +6,6 @@ Este é um blog expirado no site "[tabnews.com.br](https://www.tabnews.com.br/)"
 - Gerenciamento de posts: os usuários podem criar, editar e excluir posts.
 - Dashboard: oferece recursos como upload de foto de perfil, alteração de senha e logout.
 
----
-
 ## Configuração
 
 Para executar o blog, siga as etapas abaixo:
@@ -37,8 +35,6 @@ php -S localhost:8000 -t public
 
 Acesse o blog: Abra um navegador da web e acesse [http://localhost:8000](http://localhost:8000) para visualizar o blog.
 
----
-
 ## Funcionalidades
 
 O blog possui as seguintes funcionalidades:
@@ -50,8 +46,6 @@ O blog possui as seguintes funcionalidades:
 - Edição de posts: os usuários podem editar os posts existentes.
 - Exclusão de posts: os usuários podem excluir os posts que não desejam mais.
 - Dashboard: os usuários têm acesso a um painel de controle com recursos adicionais, como upload de foto de perfil, alteração de senha e logout.
-
----
 
 ## Capturas de Tela
 
@@ -71,7 +65,5 @@ Tela de edição de post:
 
 Tela de perfil do usuário:
 ![Tela de perfil do usuário](caminho/para/tela_de_perfil_do_usuario.png)
-
----
 
 Sinta-se à vontade para personalizar e expandir o blog de acordo com suas necessidades. Divirta-se blogando!
