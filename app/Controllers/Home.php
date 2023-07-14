@@ -10,9 +10,7 @@ class Home extends BaseController
     {
         $postmodel = new PostModel();
         $posts = $postmodel->select('id,title,slug,created_at')->orderBy('id', 'DESC')->paginate(15);
-
-        // var_dump($posts);
-        // die();
+       
         $postmodel->pager->links();
         $postmodel->pager->getPerPage();
 
