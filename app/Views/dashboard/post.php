@@ -48,9 +48,7 @@
                 </div>
             </form>
             <br>
-            <a href="<?= url_to('auth.register') ?>">
-                Create a new account
-            </a>
+
         </div>
     </div>
 </div>

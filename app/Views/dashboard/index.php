@@ -24,9 +24,12 @@
                             <!-- <?= var_dump(WRITEPATH . 'uploads\images\\' . session()->get('avatar')); ?> -->
                             <!--img src="/images/?= $userInfo['avatar']; ?>" -->
 
-                            <img src="<?= 'images/' . session()->get('avatar'); ?>" alt="Img" width="200px" height="200px" class="mb-2">
+                            <img src="<?= 'images/' . session()->get('avatar'); ?>" alt="Img" width="200px"
+                                height="200px" class="mb-2">
                             <!-- form action="?= base_url('auth/uploadImage'); ?>" -->
-                            <form action="<?= url_to('dashboard.upload'); ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= url_to('dashboard.upload'); ?>" method="post"
+                                enctype="multipart/form-data">
+                                <?= csrf_field(); ?>
                                 <input type="file" name="userfile" class="form-control-file" size="10" />
                                 <hr>
                                 <input type="submit">
@@ -55,15 +58,15 @@
                 </tbody>
             </table>
             <?php if (!empty(session()->getFlashData('notification'))) : ?>
-                <div class="alert alert-info" id="notification">
-                    <?= session()->getFlashData('notification') ?>
-                </div>
+            <div class="alert alert-info" id="notification">
+                <?= session()->getFlashData('notification') ?>
+            </div>
             <?php endif ?>
             <div class="form-group mb-3">
                 <?php if (session()->has('error')) : ?>
-                    <span class="text text-danger">
-                        <?php echo session()->getFlashdata('error') ?>
-                    </span>
+                <span class="text text-danger">
+                    <?php echo session()->getFlashdata('error') ?>
+                </span>
                 <?php endif ?>
             </div>
         </div>
