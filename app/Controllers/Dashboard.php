@@ -42,7 +42,7 @@ class Dashboard extends BaseController
         // }
 
         // var_dump($img);
-        // die();
+
         // $imageName = $this->request->getFile('userImage')->getName();
 
         if (!$this->validate($validationRule)) {
@@ -82,7 +82,7 @@ class Dashboard extends BaseController
             $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
             // Move a imagem para o diretório público
             copy($avatarPath, $newAvatarPath);
-            
+
             // Redireciona para a página de dashboard com uma mensagem de notificação
             return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully👽');
         } else {
