@@ -1,6 +1,6 @@
 # My_Blog
 
-Este é um blog expirado no site "[tabnews.com.br](https://www.tabnews.com.br/)" desenvolvido usando o framework CodeIgniter, JavaScript e Bootstrap. O blog possui as seguintes funcionalidades:
+Este é um blog inspirado no site "[tabnews.com.br](https://www.tabnews.com.br/)" desenvolvido usando o framework CodeIgniter, JavaScript e Bootstrap. O blog possui as seguintes funcionalidades:
 
 - Autenticação de usuário: permite que os usuários façam login, registrem-se e redefinam suas senhas.
 - Gerenciamento de posts: os usuários podem criar, editar e excluir posts.
