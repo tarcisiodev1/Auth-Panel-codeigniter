@@ -41,7 +41,7 @@ class Dashboard extends BaseController
         //     mkdir($config['upload_path'], 0777);
         // }
 
-        // var_dump($img);
+
 
         // $imageName = $this->request->getFile('userImage')->getName();
 
