@@ -34,10 +34,8 @@ class Dashboard extends BaseController
 
 
         $loggedInUserId = session()->get('id');
-        // $config['upload_path'] = getcwd() . '/images';
 
-        // Verifica se o diretório de upload não existe e o cria
-        // if (!is_dir($config['upload_path'])) {
+
 
 
 
