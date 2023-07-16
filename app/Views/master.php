@@ -19,11 +19,13 @@
 
 <body>
     <?= $this->include('partials/navbar.php') ?>
+
     <?= $this->renderSection('content') ?>
     <script src="<?= base_url(' assets/bootstrap/bootstrap.bundle.min.js') ?>">
     </script>
     <script src="<?= base_url('assets/js/index.js') ?>">
     </script>
+    <?= $this->renderSection('js') ?>
 </body>
 
 </html>
