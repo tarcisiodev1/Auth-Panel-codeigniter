@@ -38,8 +38,7 @@ class Dashboard extends BaseController
 
         // Verifica se o diretório de upload não existe e o cria
         // if (!is_dir($config['upload_path'])) {
-        //     mkdir($config['upload_path'], 0777);
-        // }
+
 
 
 
