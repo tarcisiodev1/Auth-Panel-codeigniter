@@ -19,12 +19,18 @@ class Dashboard extends BaseController
 
     public function upload()
     {
+
+        if (!$this->request->is('post')) {
+            return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
+        }
+
+
         $validationRule = [
             'userfile' => [
                 'label' => 'Image File',
                 'rules' => [
                     'uploaded[userfile]',
-                    // 'is_image[userfile]',
+                    'is_image[userfile]',
                     // 'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
                     // 'max_size[userfile,100]',
                     // 'max_dims[userfile,1024,768]',
