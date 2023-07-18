@@ -12,8 +12,7 @@ class Dashboard extends BaseController
 
         $uploadPath = WRITEPATH . 'uploads\images';
         $data = ['img_user' => $uploadPath . '\\'];
-        // var_dump($data['img_user']);
-        // die();
+
         return view('dashboard/index');
     }
 
