@@ -14,14 +14,14 @@
 
             <div class="form-group mb-3">
                 <?php if (!empty(session()->getFlashData('notification'))) : ?>
-                    <div class="alert alert-info" id="notification">
-                        <?= session()->getFlashData('notification') ?>
-                    </div>
+                <div class="alert alert-info" id="notification">
+                    <?= session()->getFlashData('notification') ?>
+                </div>
                 <?php endif ?>
                 <?php if (session()->has('error')) : ?>
-                    <span class="text text-danger">
-                        <?php echo session()->getFlashdata('error') ?>
-                    </span>
+                <span class="text text-danger">
+                    <?php echo session()->getFlashdata('error') ?>
+                </span>
                 <?php endif ?>
             </div>
         </div>
@@ -32,13 +32,12 @@
 <?= $this->section('js') ?>
 
 <script>
-    var dashboard = document.querySelector('._indexDashboard')
+var dashboard = document.querySelector('._indexDashboard')
 
-    fetch('<?= url_to('dashboard.fetch', csrf_hash()) ?>', {
-        method: 'get'
-    }).then(response => response.text()).then(html => {
-        dashboard.innerHTML = html;
-    }).catch(error => console.log(error));
-    // 
+fetch('<?= url_to('dashboard.fetch', csrf_hash()) ?>', {
+    method: 'get'
+}).then(response => response.text()).then(html => {
+    dashboard.innerHTML = html;
+}).catch(error => console.log(error));
 </script>
 <?= $this->endSection('') ?>
