@@ -45,7 +45,7 @@ class Dashboard extends BaseController
 
 
 
-        // $imageName = 
+
 
         if (!$this->validate($validationRule)) {
             return redirect()->route('dashboard.upload')->with('error', 'upload failed');
