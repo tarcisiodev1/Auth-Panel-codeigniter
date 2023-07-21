@@ -57,14 +57,17 @@ Tela de login:
 Tela de registro:
 ![Tela de registro](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/6cb035d4-1702-4bff-823b-0c54a0297038)
 
+Tela de post:
+![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/7f879d74-358b-4d5f-b741-afe48fc80b48)
+
+Tela home Posts:
+![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
+
 Tela de criação de post:
 ![Tela de criação de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
 
-Tela de post:
-![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
-
 Tela de edição de post:
-![Tela de edição de post](caminho/para/tela_de_edicao_de_post.png)
+![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/db3712c1-8bdd-4a18-b6eb-e61e584b9283)
 
 Tela de perfil do usuário:
 ![Tela de perfil do usuário](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/52f6e736-f39c-4d9c-bcfe-9284c417f04d)
