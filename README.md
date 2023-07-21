@@ -52,18 +52,21 @@ O blog possui as seguintes funcionalidades:
 Aqui estão algumas capturas de tela do blog:
 
 Tela de login:
-![Tela de login](caminho/para/tela_de_login.png)
+![Tela de login](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/532ab174-b634-465c-8343-d33bcab56c40)
 
 Tela de registro:
-![Tela de registro](caminho/para/tela_de_registro.png)
+![Tela de registro](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/6cb035d4-1702-4bff-823b-0c54a0297038)
 
 Tela de criação de post:
-![Tela de criação de post](caminho/para/tela_de_criacao_de_post.png)
+![Tela de criação de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
+
+Tela de post:
+![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
 
 Tela de edição de post:
 ![Tela de edição de post](caminho/para/tela_de_edicao_de_post.png)
 
 Tela de perfil do usuário:
-![Tela de perfil do usuário](caminho/para/tela_de_perfil_do_usuario.png)
+![Tela de perfil do usuário](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/52f6e736-f39c-4d9c-bcfe-9284c417f04d)
 
 Sinta-se à vontade para personalizar e expandir o blog de acordo com suas necessidades. Divirta-se blogando!
