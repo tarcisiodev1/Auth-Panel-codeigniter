@@ -61,7 +61,7 @@ Tela de post:
 ![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/7f879d74-358b-4d5f-b741-afe48fc80b48)
 
 Tela home Posts:
-![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
+![Tela de edição de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/12a5e240-ce13-4857-a7c6-6cdabf54aa7d)
 
 Tela de criação de post:
 ![Tela de criação de post](https://github.com/tarcisiodev1/Blog-Dashboard-Ci4/assets/111070575/62224d9c-b3f1-42b3-a627-0c9eda365b56)
