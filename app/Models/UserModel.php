@@ -23,7 +23,7 @@ class UserModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
+    protected $validationRules = [
 
         // 'user' => 'required|is_unique[users.user]',
         // 'name' => 'required',
@@ -31,7 +31,6 @@ class UserModel extends Model
         // 'profile' => 'required',
         // 'password' => 'required',
         // 'avatar' => 'required',
-
 
     ];
     protected $validationMessages   = [];
@@ -51,7 +50,7 @@ class UserModel extends Model
 
     protected function hashPass($data)
     {
-        if (!isset($data['data']['password'])) {
+        if (! isset($data['data']['password'])) {
             return $data;
         }
 
@@ -65,13 +64,14 @@ class UserModel extends Model
     {
         $getUser = $this->select('id, user, email, profile, password, avatar')->where('user', $user)->first();
 
-        if (is_null($getUser)) {
+        if (null === $getUser) {
             return false;
         }
 
-        if (!password_verify($pass, $getUser->password)) {
+        if (! password_verify($pass, $getUser->password)) {
             return false;
         }
+
         return $getUser;
     }
 }

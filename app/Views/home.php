@@ -12,8 +12,8 @@
                 <h1 class="text-center m-4 "></h1>
 
                 <?php $currentPage = $pager->getCurrentPage() ?? 1; ?>
-                <?php $startIndex = ($currentPage - 1) * $pager->getPerPage(); ?>
-                <?php if (!empty(session()->getFlashData('notification'))) : ?>
+                <?php $startIndex  = ($currentPage - 1) * $pager->getPerPage(); ?>
+                <?php if (! empty(session()->getFlashData('notification'))) : ?>
                 <div class="alert alert-info" id="notification">
                     <?= session()->getFlashData('notification') ?>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="form-group mb-3">
                     <?php if (session()->has('error')) : ?>
                     <span class="text text-danger">
-                        <?php echo session()->getFlashdata('error') ?>
+                        <?= session()->getFlashdata('error') ?>
                     </span>
                     <?php endif ?>
                 </div>

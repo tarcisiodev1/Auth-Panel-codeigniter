@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" name="user" placeholder="User Here">
                     <span class="text text-danger">
                         <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['user'] ?? ''  ?>
+                        <?= session()->getFlashdata('errors')['user'] ?? ''  ?>
 
                     </span>
                 </div>
@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" name="email" placeholder="Email Here">
                     <span class="text text-danger">
                         <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['email'] ?? ''  ?>
+                        <?= session()->getFlashdata('errors')['email'] ?? ''  ?>
 
                     </span>
                 </div>
@@ -35,7 +35,7 @@
                     <input type="password" class="form-control" name="password" placeholder="Password Here">
                     <span class="text text-danger">
                         <!-- INCLUIR Flash data -->
-                        <?php echo session()->getFlashdata('errors')['password'] ?? ''  ?>
+                        <?= session()->getFlashdata('errors')['password'] ?? ''  ?>
 
                     </span>
                 </div>
@@ -48,13 +48,13 @@
 
                     <?php if (session()->has('error')) : ?>
                     <span class="text text-danger">
-                        <?php echo session()->getFlashdata('error'); ?>
+                        <?= session()->getFlashdata('error'); ?>
 
                     </span>
                     <?php endif ?>
                     <?php if (session()->has('success')) : ?>
                     <span class="alert alert-info">
-                        <?php echo session()->getFlashdata('success'); ?>
+                        <?= session()->getFlashdata('success'); ?>
 
                     </span>
                     <?php endif ?>

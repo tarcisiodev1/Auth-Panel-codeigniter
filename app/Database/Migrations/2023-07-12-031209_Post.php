@@ -11,25 +11,25 @@ class Post extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'unsigned' => true,
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'user_id' => [
-                'type' => 'INT',
+                'type'     => 'INT',
                 'unsigned' => true,
-                'null' => false,
+                'null'     => false,
             ],
 
             'title' => [
-                'type' => 'VARCHAR',
-                'null' => false,
+                'type'       => 'VARCHAR',
+                'null'       => false,
                 'constraint' => 255,
             ],
             'slug' => [
-                'type' => 'VARCHAR',
-                'null' => false,
+                'type'       => 'VARCHAR',
+                'null'       => false,
                 'constraint' => 255,
             ],
             'body' => [
@@ -37,11 +37,11 @@ class Post extends Migration
                 'null' => false,
             ],
             'created_at' => [
-                'type' => 'TIMESTAMP',
+                'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
             'updated_at' => [
-                'type' => 'TIMESTAMP',
+                'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
             ],
         ]);

@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\UserModel;
 
 class Dashboard extends BaseController
@@ -11,7 +10,7 @@ class Dashboard extends BaseController
     {
 
         $uploadPath = WRITEPATH . 'uploads\images';
-        $data = ['img_user' => $uploadPath . '\\'];
+        $data       = ['img_user' => $uploadPath . '\\'];
 
         return view('dashboard/index');
     }
@@ -19,10 +18,9 @@ class Dashboard extends BaseController
     public function upload()
     {
 
-        if (!$this->request->is('post')) {
+        if (! $this->request->is('post')) {
             return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
         }
-
 
         $validationRule = [
             'userfile' => [
@@ -37,25 +35,16 @@ class Dashboard extends BaseController
             ],
         ];
 
-
         $loggedInUserId = session()->get('id');
 
-
-
-
-
-
-
-
-        if (!$this->validate($validationRule)) {
+        if (! $this->validate($validationRule)) {
             return redirect()->route('dashboard.upload')->with('error', 'upload failed');
         }
         $img = $this->request->getFile('userfile');
 
-
         // Verifica se o arquivo ainda não foi movido e se o ID do usuário está definido
-        if (!$img->hasMoved()) {
-            //Redimensionar imagem
+        if (! $img->hasMoved()) {
+            // Redimensionar imagem
             $newName = $img->getRandomName();
             \Config\Services::image()
                 ->withFile($img)
@@ -79,21 +68,18 @@ class Dashboard extends BaseController
 
             session()->set('avatar', $newName);
 
-
-            $avatarPath = WRITEPATH . 'uploads/images/' . session()->get('avatar');
+            $avatarPath    = WRITEPATH . 'uploads/images/' . session()->get('avatar');
             $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
             // Move a imagem para o diretório público
             copy($avatarPath, $newAvatarPath);
 
             // Redireciona para a página de dashboard com uma mensagem de notificação
             return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully👽');
-        } else {
-            // Redireciona para a página de dashboard com uma mensagem de notificação de falha
-            return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
         }
+        // Redireciona para a página de dashboard com uma mensagem de notificação de falha
+        return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
 
         // $userModel = new UserModel();
-
 
         // $data = [
         //     'avatar' => $imageName,

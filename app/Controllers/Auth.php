@@ -2,17 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\UserModel;
-use Exception;
-
-use function PHPUnit\Framework\isEmpty;
 
 class Auth extends BaseController
 {
     public function index()
     {
-        echo "register page";
+        echo 'register page';
     }
 
     public function register()
@@ -33,17 +29,17 @@ class Auth extends BaseController
                 ],
             );
 
-            if (!$validated) {
+            if (! $validated) {
                 return redirect()->route('auth.register')->with('errors', $this->validator->getErrors());
             }
-            $userData = $this->request->getPost();
+            $userData            = $this->request->getPost();
             $userData['profile'] = 'user';
-            $userData['avatar'] = 'null';
+            $userData['avatar']  = 'null';
 
             $userModel = new UserModel();
 
             $inserted = $userModel->insert($userData);
-            if (!$inserted) {
+            if (! $inserted) {
                 return redirect()->route('auth.register')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
             }
 
@@ -55,13 +51,14 @@ class Auth extends BaseController
 
     public function login()
     {
+
+        // phpinfo();
+        // die();
         if (session()->has('user')) {
             return redirect()->route('dashboard');
         }
 
-
         if ($this->request->is('post')) {
-
 
             $validated = $this->validate(
                 [
@@ -75,11 +72,9 @@ class Auth extends BaseController
                 ],
             );
 
-            if (!$validated) {
+            if (! $validated) {
                 return redirect()->route('auth.login')->with('errors', $this->validator->getErrors());
             }
-
-
 
             $userModel = new UserModel();
 
@@ -87,12 +82,12 @@ class Auth extends BaseController
                 $this->request->getPost('user'),
                 $this->request->getPost('password')
             );
-            if (!$userCheck) {
+            if (! $userCheck) {
 
                 return redirect()->route('auth.login')->with('error', 'Incorrect user and/or password 🤔');
             }
             if ($userCheck) {
-                //salva os dados na sessão
+                // salva os dados na sessão
                 unset($userCheck->password);
                 session()->set('id', $userCheck->id);
                 session()->set('user', $userCheck->user);
@@ -100,21 +95,20 @@ class Auth extends BaseController
                 session()->set('email', $userCheck->email);
                 session()->set('avatar', $userCheck->avatar);
 
-
-                $avatarPath = WRITEPATH . 'uploads/images/' . session()->get('avatar');
+                $avatarPath    = WRITEPATH . 'uploads/images/' . session()->get('avatar');
                 $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
                 // Move a imagem para o diretório público
                 if (file_exists($avatarPath)) {
                     copy($avatarPath, $newAvatarPath);
+
                     return redirect()->route('dashboard');
                 }
 
-
-
-                //redireciona o user para dashboard
+                // redireciona o user para dashboard
                 return redirect()->route('dashboard');
             }
         }
+
         return view('auth/login');
     }
 
@@ -122,9 +116,10 @@ class Auth extends BaseController
     {
 
         helper('filesystem');
-        //destruir a sessao (session) e voltar para o login
+        // destruir a sessao (session) e voltar para o login
         session()->destroy();
         delete_files('images/');
+
         return redirect()->route('auth.login');
     }
 }

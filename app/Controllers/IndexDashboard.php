@@ -2,14 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class IndexDashboard extends BaseController
 {
-    public function index(String $csrf)
+    public function index(string $csrf)
     {
-
-
 
         if ($csrf !== csrf_hash()) {
             return redirect()->route('/');

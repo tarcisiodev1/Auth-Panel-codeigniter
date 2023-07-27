@@ -14,7 +14,7 @@
 
                 <div class="form-group  mb-3">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" name="title" id="title" value="<?= $post->title ?? "" ?>" placeholder="Enter the title">
+                    <input type="text" class="form-control" name="title" id="title" value="<?= $post->title ?? '' ?>" placeholder="Enter the title">
                     <span class="text text-danger">
                         <!-- Include Flash data -->
 
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="body">Body</label>
-                    <textarea class="form-control" name="body" id="body" rows="5" placeholder="Enter the body"><?= $post->body ?? "" ?></textarea>
+                    <textarea class="form-control" name="body" id="body" rows="5" placeholder="Enter the body"><?= $post->body ?? '' ?></textarea>
                     <span class="text text-danger">
                         <!-- Include Flash data -->
                         <?= session()->getFlashdata('errors')['body'] ?? '' ?>

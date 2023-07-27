@@ -13,14 +13,14 @@
             </table>
 
             <div class="form-group mb-3">
-                <?php if (!empty(session()->getFlashData('notification'))) : ?>
+                <?php if (! empty(session()->getFlashData('notification'))) : ?>
                 <div class="alert alert-info" id="notification">
                     <?= session()->getFlashData('notification') ?>
                 </div>
                 <?php endif ?>
                 <?php if (session()->has('error')) : ?>
                 <span class="text text-danger">
-                    <?php echo session()->getFlashdata('error') ?>
+                    <?= session()->getFlashdata('error') ?>
                 </span>
                 <?php endif ?>
             </div>

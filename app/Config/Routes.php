@@ -30,15 +30,15 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard/home(:any)', 'indexDashboard::index/$1',  ['as' => 'dashboard.fetch', 'filter' => 'authf:admin,user']);
+$routes->get('/dashboard/home(:any)', 'indexDashboard::index/$1', ['as' => 'dashboard.fetch', 'filter' => 'authf:admin,user']);
 $routes->get('/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->post('/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->get('/register', 'Auth::register', ['as' => 'auth.register']);
 $routes->post('/register', 'Auth::register', ['as' => 'auth.register']);
-$routes->get('/dashboard', 'Dashboard::index',  ['as' => 'dashboard', 'filter' => 'authf:admin,user']);
-$routes->post('/dashboard/index', 'Dashboard::upload',  ['as' => 'dashboard.upload', 'filter' => 'authf:admin,user']);
-$routes->get('/dashboard/index', 'Dashboard::upload',  ['as' => 'dashboard.index', 'filter' => 'authf:admin,user']);
-$routes->post('/dashboard', 'Dashboard::index',  ['as' => 'dashboard', 'filter' => 'authf:admin,user']);
+$routes->get('/dashboard', 'Dashboard::index', ['as' => 'dashboard', 'filter' => 'authf:admin,user']);
+$routes->post('/dashboard/index', 'Dashboard::upload', ['as' => 'dashboard.upload', 'filter' => 'authf:admin,user']);
+$routes->get('/dashboard/index', 'Dashboard::upload', ['as' => 'dashboard.index', 'filter' => 'authf:admin,user']);
+$routes->post('/dashboard', 'Dashboard::index', ['as' => 'dashboard', 'filter' => 'authf:admin,user']);
 $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 $routes->get('/post', 'Post::index', ['as' => 'post', 'filter' => 'authf:admin,user']);
 $routes->get('/addpost', 'Post::store', ['as' => 'post.store', 'filter' => 'authf:admin,user']);
