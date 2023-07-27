@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of CodeIgniter 4 framework.
+ *
+ * (c) 2021 CodeIgniter Foundation <admin@codeigniter.com>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -48,9 +59,9 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    protected function hashPass($data)
+    protected function hashPass(array $data)
     {
-        if (! isset($data['data']['password'])) {
+        if (!isset($data['data']['password'])) {
             return $data;
         }
 
@@ -68,7 +79,7 @@ class UserModel extends Model
             return false;
         }
 
-        if (! password_verify($pass, $getUser->password)) {
+        if (!password_verify($pass, $getUser->password)) {
             return false;
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controllers;
 
 use App\Models\UserModel;
@@ -18,7 +20,7 @@ class Dashboard extends BaseController
     public function upload()
     {
 
-        if (! $this->request->is('post')) {
+        if (!$this->request->is('post')) {
             return redirect()->route('dashboard')->with('notification', 'Image uploaded failed🙀');
         }
 
@@ -37,22 +39,26 @@ class Dashboard extends BaseController
 
         $loggedInUserId = session()->get('id');
 
-        if (! $this->validate($validationRule)) {
+        if (!$this->validate($validationRule)) {
             return redirect()->route('dashboard.upload')->with('error', 'upload failed');
         }
         $img = $this->request->getFile('userfile');
 
         // Verifica se o arquivo ainda não foi movido e se o ID do usuário está definido
-        if (! $img->hasMoved()) {
+        if ($img->isValid() && !$img->hasMoved()) {
+
             // Redimensionar imagem
             $newName = $img->getRandomName();
+            $img->move(WRITEPATH . 'uploads\images\\', $newName);
+
+
             \Config\Services::image()
-                ->withFile($img)
+                ->withFile(WRITEPATH . 'uploads\images\\' . $newName)
                 ->resize(200, 200, true)
                 ->save(WRITEPATH . 'uploads\images\\' . $newName);
             // Move o arquivo para o diretório de upload com o nome obtido anteriormente
 
-            $uploadPath = WRITEPATH . 'uploads/images';
+
             // $img->move($uploadPath, $newName);
 
             // Define os dados a serem atualizados no banco de dados

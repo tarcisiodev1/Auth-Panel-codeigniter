@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 use CodeIgniter\CodeIgniter;
 use Config\Services;
 
