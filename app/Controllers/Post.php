@@ -39,7 +39,7 @@ class Post extends BaseController
     public function create()
     {
 
-        if (! $this->request->is('post')) {
+        if (!$this->request->is('post')) {
 
             return redirect()->route('/');
         }
@@ -52,7 +52,7 @@ class Post extends BaseController
             ],
         );
 
-        if (! $validated) {
+        if (!$validated) {
             return redirect()->route('post.store')->with('errors', $this->validator->getErrors());
         }
         $post = $this->request->getPost();
@@ -65,7 +65,7 @@ class Post extends BaseController
             'slug'    => url_title($post['title'], '-', true),
             'body'    => $post['body'],
         ]);
-        if (! $inserted) {
+        if (!$inserted) {
             return redirect()->route('post.store')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
         }
 
@@ -86,7 +86,7 @@ class Post extends BaseController
 
     public function update(string $slug)
     {
-        if (! $this->request->is('post')) {
+        if (!$this->request->is('post')) {
 
             return redirect()->route('/');
         }
@@ -98,7 +98,7 @@ class Post extends BaseController
             ],
         );
 
-        if (! $validated) {
+        if (!$validated) {
             return redirect()->back()->with('errors', $this->validator->getErrors());
         }
         $post = $this->request->getPost();
@@ -114,7 +114,7 @@ class Post extends BaseController
         ];
 
         $updated = $postModel->update($id, $data);
-        if (! $updated) {
+        if (!$updated) {
             return redirect()->back()->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
         }
 
@@ -124,10 +124,12 @@ class Post extends BaseController
     public function destroy(string $slug)
     {
         $postModel = new PostModel();
+
+
         $id        = $postModel->select('id')->where('slug', $slug)->first()->id;
 
         $deleted = $postModel->delete(['id' => $id]);
-        if (! $deleted) {
+        if (!$deleted) {
             return redirect()->back()->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
         }
 
