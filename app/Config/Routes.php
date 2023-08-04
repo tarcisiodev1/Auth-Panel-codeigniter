@@ -60,6 +60,8 @@ $routes->get('/postview', 'Post::view', ['as' => 'post.view']);
 $routes->post('/updatepost/(:any)', 'Post::update/$1', ['as' => 'post.up', 'filter' => 'authf:admin,user']);
 $routes->get('/editpost/(:any)', 'Post::edit/$1', ['as' => 'post.editGet', 'filter' => 'authf:admin,user']);
 $routes->get('/deletepost/(:any)', 'Post::destroy/$1', ['as' => 'post.destroy', 'filter' => 'authf:admin,user']);
+$routes->get('uploads/(:segment)', 'IndexDashboard::serveImage/$1', ['as' => 'upload.serveImage']);
+
 
 /*
  * --------------------------------------------------------------------

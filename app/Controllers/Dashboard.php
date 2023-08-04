@@ -74,10 +74,10 @@ class Dashboard extends BaseController
 
             session()->set('avatar', $newName);
 
-            $avatarPath    = WRITEPATH . 'uploads/images/' . session()->get('avatar');
-            $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
-            // Move a imagem para o diretório público
-            copy($avatarPath, $newAvatarPath);
+            // $avatarPath    = WRITEPATH . 'uploads/images/' . session()->get('avatar');
+            // $newAvatarPath = FCPATH . 'images/' . session()->get('avatar');
+            // // Move a imagem para o diretório público
+            // copy($avatarPath, $newAvatarPath);
 
             // Redireciona para a página de dashboard com uma mensagem de notificação
             return redirect()->route('dashboard')->with('notification', 'Image uploaded successfully👽');
