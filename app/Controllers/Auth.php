@@ -40,7 +40,7 @@ class Auth extends BaseController
                 ],
             );
 
-            if (! $validated) {
+            if (!$validated) {
                 return redirect()->route('auth.register')->with('errors', $this->validator->getErrors());
             }
             $userData            = $this->request->getPost();
@@ -50,7 +50,7 @@ class Auth extends BaseController
             $userModel = new UserModel();
 
             $inserted = $userModel->insert($userData);
-            if (! $inserted) {
+            if (!$inserted) {
                 return redirect()->route('auth.register')->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
             }
 
@@ -63,8 +63,7 @@ class Auth extends BaseController
     public function login()
     {
 
-        // phpinfo();
-        // die();
+
         if (session()->has('user')) {
             return redirect()->route('dashboard');
         }
@@ -83,7 +82,7 @@ class Auth extends BaseController
                 ],
             );
 
-            if (! $validated) {
+            if (!$validated) {
                 return redirect()->route('auth.login')->with('errors', $this->validator->getErrors());
             }
 
@@ -93,7 +92,7 @@ class Auth extends BaseController
                 $this->request->getPost('user'),
                 $this->request->getPost('password')
             );
-            if (! $userCheck) {
+            if (!$userCheck) {
 
                 return redirect()->route('auth.login')->with('error', 'Incorrect user and/or password 🤔');
             }
