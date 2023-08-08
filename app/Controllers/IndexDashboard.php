@@ -28,7 +28,7 @@ class IndexDashboard extends BaseController
         //     'uploads\images\\' . session()->get('avatar');
 
 
-        // dd($data);
+
         return view('fetch/_dashboard',);
     }
 
