@@ -14,14 +14,30 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\PostModel;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 class Post extends BaseController
 {
+    //usando injeção de dependencia para o model
+
+    private $post;
+
+
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    {
+
+        parent::initController($request, $response, $logger);
+
+        $this->post = model('PostModel');
+    }
+
     public function index(string $slug)
     {
 
-        $post = new PostModel();
-        $post = $post->select('posts.id,posts.title,posts.slug,posts.body,posts.created_at')->where('posts.slug', $slug)->first();
+
+        $post = $this->post->select('posts.id,posts.title,posts.slug,posts.body,posts.created_at')->where('posts.slug', $slug)->first();
 
         $data = [
             'post' => $post,
@@ -57,9 +73,9 @@ class Post extends BaseController
         }
         $post = $this->request->getPost();
 
-        $postModel = new PostModel();
 
-        $inserted = $postModel->insert([
+
+        $inserted = $this->post->insert([
             'user_id' => session()->get('id'),
             'title'   => $post['title'],
             'slug'    => url_title($post['title'], '-', true),
@@ -74,8 +90,8 @@ class Post extends BaseController
 
     public function edit(string $slug)
     {
-        $post = new PostModel();
-        $post = $post->select('posts.id,posts.title,posts.slug,posts.body,posts.created_at')->where('posts.slug', $slug)->first();
+
+        $post = $this->post->select('posts.id,posts.title,posts.slug,posts.body,posts.created_at')->where('posts.slug', $slug)->first();
 
         $data = [
             'post' => $post,
@@ -103,8 +119,8 @@ class Post extends BaseController
         }
         $post = $this->request->getPost();
 
-        $postModel = new PostModel();
-        $id        = $postModel->select('id')->where('slug', $slug)->first()->id;
+
+        $id        = $this->post->select('id')->where('slug', $slug)->first()->id;
 
         $data = [
             'user_id' => session()->get('id'),
@@ -113,7 +129,7 @@ class Post extends BaseController
             'body'    => $post['body'],
         ];
 
-        $updated = $postModel->update($id, $data);
+        $updated = $this->post->update($id, $data);
         if (!$updated) {
             return redirect()->back()->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
         }
@@ -123,12 +139,12 @@ class Post extends BaseController
 
     public function destroy(string $slug)
     {
-        $postModel = new PostModel();
 
 
-        $id        = $postModel->select('id')->where('slug', $slug)->first()->id;
 
-        $deleted = $postModel->delete(['id' => $id]);
+        $id        = $this->post->select('id')->where('slug', $slug)->first()->id;
+
+        $deleted = $this->post->delete(['id' => $id]);
         if (!$deleted) {
             return redirect()->back()->with('error', 'OCORREU UM ERRO AO  CADASTRAR USUARIO 🥹');
         }
