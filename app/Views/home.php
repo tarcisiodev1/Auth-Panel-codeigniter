@@ -5,7 +5,7 @@
 <section>
     <div class="container ">
 
-
+        <!-- pager home -->
 
         <div class="row mt-5">
             <div class="col-md-8 offset-md-2">
