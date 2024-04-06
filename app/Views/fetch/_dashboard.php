@@ -10,7 +10,7 @@
 <tbody>
     <tr>
         <th scope="row">
-            <!-- <?= var_dump(WRITEPATH . 'uploads\images\\' . session()->get('avatar')); ?> -->
+            <!-- <?= var_dump(WRITEPATH . 'uploads/images' . '/' . session()->get('avatar')); ?> -->
             <!--img src="/images/?= $userInfo['avatar']; ?>"
         'images/' . session()->get('avatar');-->
 

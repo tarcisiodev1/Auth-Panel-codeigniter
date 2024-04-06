@@ -10,6 +10,7 @@ class Dashboard extends BaseController
 {
     public function index()
     {
+        // dd("fwefw");
 
         $uploadPath = WRITEPATH . 'uploads\images';
         $data       = ['img_user' => $uploadPath . '\\'];
@@ -49,13 +50,13 @@ class Dashboard extends BaseController
 
             // Redimensionar imagem
             $newName = $img->getRandomName();
-            $img->move(WRITEPATH . 'uploads\images\\', $newName);
+            $img->move(WRITEPATH . 'uploads/images' . '/', $newName);
 
 
             \Config\Services::image()
-                ->withFile(WRITEPATH . 'uploads\images\\' . $newName)
+                ->withFile(WRITEPATH . 'uploads/images' . '/' . $newName)
                 ->resize(200, 200, true)
-                ->save(WRITEPATH . 'uploads\images\\' . $newName);
+                ->save(WRITEPATH . 'uploads/images' . '/' . $newName);
             // Move o arquivo para o diretório de upload com o nome obtido anteriormente
 
 
@@ -98,5 +99,43 @@ class Dashboard extends BaseController
         $data = ['upload_file_path' => $img->getPathname()];
 
         return view('dashboard/index', $data);
+    }
+
+    public function fetch(string $csrf)
+    {
+
+        // dd('olá');
+
+        if ($csrf !== csrf_hash()) {
+            return redirect()->route('/');
+        }
+
+        // $avatarPath    = WRITEPATH .
+        //     'uploads\images\\' . session()->get('avatar');
+
+
+
+        return view('fetch/_dashboard',);
+    }
+
+    public function serveImage($imageName)
+    {
+        $imagePath = WRITEPATH . 'uploads/images/' . $imageName;
+
+        if (file_exists($imagePath)) {
+            $imageInfo = getimagesize($imagePath);
+            $fileSize = filesize($imagePath);
+
+            // Defina os cabeçalhos adequados para servir a imagem
+            header('Content-Type: ' . $imageInfo['mime']);
+            header('Content-Length: ' . $fileSize);
+
+            // Exiba o conteúdo da imagem
+            readfile($imagePath);
+            exit();
+        } else {
+            // Se a imagem não existir, retorne um erro 404
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 }

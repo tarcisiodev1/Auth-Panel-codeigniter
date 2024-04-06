@@ -13,7 +13,7 @@
             </table>
 
             <div class="form-group mb-3">
-                <?php if (! empty(session()->getFlashData('notification'))) : ?>
+                <?php if (!empty(session()->getFlashData('notification'))) : ?>
                 <div class="alert alert-info" id="notification">
                     <?= session()->getFlashData('notification') ?>
                 </div>
@@ -38,6 +38,7 @@ fetch('<?= url_to('dashboard.fetch', csrf_hash()) ?>', {
     method: 'get'
 }).then(response => response.text()).then(html => {
     dashboard.innerHTML = html;
+    console.log(html); // Adiciona um log para exibir o conteúdo recebido
 }).catch(error => console.log(error));
 </script>
 <?= $this->endSection('') ?>

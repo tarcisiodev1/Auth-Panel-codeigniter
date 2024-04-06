@@ -41,7 +41,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard/home(:any)', 'indexDashboard::index/$1', ['as' => 'dashboard.fetch', 'filter' => 'authf:admin,user']);
+// $routes->get('/dashboard/home(:any)', 'indexDashboard::index/$1', ['as' => 'dashboard.fetch', 'filter' => 'authf:admin,user']);
+$routes->get('/dashboard/home(:any)', 'Dashboard::fetch/$1', ['as' => 'dashboard.fetch', 'filter' => 'authf:admin,user']);
 $routes->get('/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->post('/auth/login', 'Auth::login', ['as' => 'auth.login']);
 $routes->get('/register', 'Auth::register', ['as' => 'auth.register']);
@@ -60,7 +61,8 @@ $routes->get('/postview', 'Post::view', ['as' => 'post.view']);
 $routes->post('/updatepost/(:any)', 'Post::update/$1', ['as' => 'post.up', 'filter' => 'authf:admin,user']);
 $routes->get('/editpost/(:any)', 'Post::edit/$1', ['as' => 'post.editGet', 'filter' => 'authf:admin,user']);
 $routes->get('/deletepost/(:any)', 'Post::destroy/$1', ['as' => 'post.destroy', 'filter' => 'authf:admin,user']);
-$routes->get('uploads/(:segment)', 'IndexDashboard::serveImage/$1', ['as' => 'upload.serveImage']);
+// $routes->get('uploads/(:segment)', 'IndexDashboard::serveImage/$1', ['as' => 'upload.serveImage']);
+$routes->get('uploads/(:segment)', 'Dashboard::serveImage/$1', ['as' => 'upload.serveImage']);
 
 
 /*
