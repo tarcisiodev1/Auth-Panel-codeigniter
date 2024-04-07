@@ -50,13 +50,13 @@ class Dashboard extends BaseController
 
             // Redimensionar imagem
             $newName = $img->getRandomName();
-            $img->move(WRITEPATH . 'uploads/images' . '/', $newName);
+            $img->move(WRITEPATH . 'uploads/images/', $newName);
 
 
             \Config\Services::image()
-                ->withFile(WRITEPATH . 'uploads/images' . '/' . $newName)
+                ->withFile(WRITEPATH . 'uploads/images/' . $newName)
                 ->resize(200, 200, true)
-                ->save(WRITEPATH . 'uploads/images' . '/' . $newName);
+                ->save(WRITEPATH . 'uploads/images/' . $newName);
             // Move o arquivo para o diretório de upload com o nome obtido anteriormente
 
 
