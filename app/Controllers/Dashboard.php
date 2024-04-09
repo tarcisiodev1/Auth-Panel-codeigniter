@@ -10,7 +10,7 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        // dd("fwefw");
+
 
         $uploadPath = WRITEPATH . 'uploads\images';
         $data       = ['img_user' => $uploadPath . '\\'];
@@ -104,7 +104,6 @@ class Dashboard extends BaseController
     public function fetch(string $csrf)
     {
 
-        // dd('olá');
 
         if ($csrf !== csrf_hash()) {
             return redirect()->route('/');
