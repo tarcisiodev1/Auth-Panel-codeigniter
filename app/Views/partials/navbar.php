@@ -10,13 +10,13 @@
     </button> -->
     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav">
+            <!-- <li class="nav-item active">
+                <a class="nav-link text-white" href="<?= url_to('/') ?>"><img
+                        src="<?= base_url('public/assets/img/nerd (1).png') ?>" alt=""></a>
+            </li> -->
             <li class="nav-item active">
-                <a class="nav-link text-white" href="<?= url_to('/') ?>"><img src="public\assets\img\nerd (1).png"
-                        alt=""></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link text-white" href="<?= url_to('/') ?>"><img src="public\assets\img\nerd (1).png"
-                        alt="">Home</a>
+
+                <a class="nav-link text-white" href="<?= url_to('/') ?>">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?= url_to('auth.login') ?>">Login</a>
