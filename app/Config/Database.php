@@ -40,8 +40,8 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => '',
         'password' => '',
-        'database' => '',
-        'DBDriver' => 'MySQLi',
+        'database' => WRITEPATH . 'blogcode.db',
+        'DBDriver' => 'SQLite3',
         'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => true,
@@ -51,6 +51,7 @@ class Database extends Config
         'encrypt'  => false,
         'compress' => false,
         'strictOn' => false,
+        'foreignKeys' => true,
         'failover' => [],
         'port'     => 3306,
     ];
